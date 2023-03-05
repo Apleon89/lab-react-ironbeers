@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import { PropagateLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
+import BeerList from "../components/BeerList";
 
 function AllBeers() {
   const navigate = useNavigate();
@@ -62,25 +63,7 @@ function AllBeers() {
       </div>
 
       <div className="allBeers-list">
-        {allBeers.map((each) => {
-          return (
-            <Link to={`/beers/${each._id}`} key={each._id}>
-              <div className="eachBeerList">
-                <div>
-                  <img src={each.image_url} alt={each.name} />
-                </div>
-                <div>
-                  <h3>{each.name}</h3>
-                  <h5>{each.tagline}</h5>
-                  <p>
-                    <span>Created by: </span>
-                    {each.contributed_by}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+        {allBeers.map((each) => <BeerList key={each._id} each={each} /> )}
       </div>
     </div>
   );

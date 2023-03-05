@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
+import BeerDetails from "../components/BeerDetails";
 import Nav from "../components/Nav";
 
 function SingleBeer() {
@@ -46,23 +47,7 @@ function SingleBeer() {
   return (
     <div>
       <Nav />
-      <div className="beerDetails">
-        <div className="imgDetails">
-          <img src={beerDetails.image_url} alt="beer img" />
-        </div>
-        <div>
-          <div className="beerDetailsName">
-            <h3>{beerDetails.name}</h3>
-            <p>{beerDetails.attenuation_level}</p>
-          </div>
-          <div className="beerDetailsTagline">
-            <p>{beerDetails.tagline}</p>
-            <span>{beerDetails.first_brewed}</span>
-          </div>
-          <p>{beerDetails.description}</p>
-          <p className="contributorName">{beerDetails.contributed_by}</p>
-        </div>
-      </div>
+      <BeerDetails beer={beerDetails}/>
     </div>
   );
 }
